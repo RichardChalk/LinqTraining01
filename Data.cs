@@ -34,6 +34,13 @@ namespace LinqTraining01
             5
         };
 
+        public List<Person> PersonList = new List<Person>()
+        {
+            new Person { Name = "Anna", Friends = new List<string> { "Bill", "Cathy" } },
+            new Person { Name = "Bill", Friends = new List<string> { "Anna", "David" } },
+            new Person { Name = "Cathy", Friends = new List<string> { "Anna", "Bill" } }
+        };
+
         public List<EmployeeClass> Employees = new List<EmployeeClass>()
         {
             new EmployeeClass() {

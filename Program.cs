@@ -10,6 +10,7 @@ var data = new Data();
 var intList = data.IntList;
 var friends = data.Friends;
 var objectList = data.ObjectList;
+var personList = data.PersonList;
 var employees = data.Employees;
 
 // LINQ //////////////////////////////////////////////////////////////////
@@ -110,15 +111,23 @@ var method6 = employees
 // SELECTMANY - SELECTMANY - SELECTMANY - SELECTMANY - SELECTMANY - 
 // SELECTMANY - SELECTMANY - SELECTMANY - SELECTMANY - SELECTMANY - 
 
-// This method will flatten the results of any sequence
-// result: 1 array with 15 letters
-// DannyThomasLeif
+// Du använder SelectMany när du har 'samlingar av samlingar' och vill
+// skapa en enkel, sammanhängande lista.
 
-var query7 = (from friend in friends
-              from letter in friend
-              select letter).ToList();
+// people.SelectMany(p => p.Friends):
+// Tar alla Friends från varje person och plattar ut dem till en lista.
 
-var method7 = friends.SelectMany(emp => emp).ToList();
+// Distinct(): Tar bort dubbletter.
+
+// ToList(): Konverterar resultatet till en lista.
+
+// Resultat:
+// ["Bill", "Cathy", "Anna", "David"]
+
+var allFriends = personList
+    .SelectMany(p => p.Friends)
+    .Distinct()
+    .ToList();
 
 // ///////////////////////////////////////////////////////////////////////////////
 // Contents of a LIST can also be flattened
